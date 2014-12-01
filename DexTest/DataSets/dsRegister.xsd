@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRegister" targetNamespace="http://tempuri.org/dsRegister.xsd" xmlns:mstns="http://tempuri.org/dsRegister.xsd" xmlns="http://tempuri.org/dsRegister.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRegister" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsRegister" msprop:Generator_UserDSName="dsRegister">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RegistersTendency" msprop:Generator_TableClassName="RegistersTendencyDataTable" msprop:Generator_TableVarName="tableRegistersTendency" msprop:Generator_RowChangedName="RegistersTendencyRowChanged" msprop:Generator_TablePropName="RegistersTendency" msprop:Generator_RowDeletingName="RegistersTendencyRowDeleting" msprop:Generator_RowChangingName="RegistersTendencyRowChanging" msprop:Generator_RowEvHandlerName="RegistersTendencyRowChangeEventHandler" msprop:Generator_RowDeletedName="RegistersTendencyRowDeleted" msprop:Generator_RowClassName="RegistersTendencyRow" msprop:Generator_UserTableName="RegistersTendency" msprop:Generator_RowEvArgName="RegistersTendencyRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Hour" msprop:Generator_ColumnVarNameInTable="columnHour" msprop:Generator_ColumnPropNameInRow="Hour" msprop:Generator_ColumnPropNameInTable="HourColumn" msprop:Generator_UserColumnName="Hour" type="xs:int" minOccurs="0" />
+              <xs:element name="DataValue" msprop:Generator_ColumnVarNameInTable="columnDataValue" msprop:Generator_ColumnPropNameInRow="DataValue" msprop:Generator_ColumnPropNameInTable="DataValueColumn" msprop:Generator_UserColumnName="DataValue" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RegistersIncrease" msprop:Generator_TableClassName="RegistersIncreaseDataTable" msprop:Generator_TableVarName="tableRegistersIncrease" msprop:Generator_TablePropName="RegistersIncrease" msprop:Generator_RowDeletingName="RegistersIncreaseRowDeleting" msprop:Generator_RowChangingName="RegistersIncreaseRowChanging" msprop:Generator_RowEvHandlerName="RegistersIncreaseRowChangeEventHandler" msprop:Generator_RowDeletedName="RegistersIncreaseRowDeleted" msprop:Generator_UserTableName="RegistersIncrease" msprop:Generator_RowChangedName="RegistersIncreaseRowChanged" msprop:Generator_RowEvArgName="RegistersIncreaseRowChangeEvent" msprop:Generator_RowClassName="RegistersIncreaseRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Hour" msprop:Generator_ColumnVarNameInTable="columnHour" msprop:Generator_ColumnPropNameInRow="Hour" msprop:Generator_ColumnPropNameInTable="HourColumn" msprop:Generator_UserColumnName="Hour" type="xs:int" minOccurs="0" />
+              <xs:element name="MemberLevel" msprop:Generator_ColumnVarNameInTable="columnMemberLevel" msprop:Generator_ColumnPropNameInRow="MemberLevel" msprop:Generator_ColumnPropNameInTable="MemberLevelColumn" msprop:Generator_UserColumnName="MemberLevel" type="xs:string" minOccurs="0" />
+              <xs:element name="DataValue" msprop:Generator_ColumnVarNameInTable="columnDataValue" msprop:Generator_ColumnPropNameInRow="DataValue" msprop:Generator_ColumnPropNameInTable="DataValueColumn" msprop:Generator_UserColumnName="DataValue" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

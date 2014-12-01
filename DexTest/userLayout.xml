@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="zh-CN">
+  <Title Text="Dashboard" />
+  <DataConnections>
+    <DataConnection Name="10.1.249.63_DMPConnection" ProviderKey="MSSqlServer">
+      <Parameters>
+        <Parameter Name="server" Value="10.1.249.63" />
+        <Parameter Name="database" Value="DMP" />
+        <Parameter Name="useIntegratedSecurity" Value="False" />
+        <Parameter Name="read only" Value="1" />
+        <Parameter Name="generateConnectionHelper" Value="false" />
+      </Parameters>
+    </DataConnection>
+  </DataConnections>
+  <DataSources>
+    <DataSource ComponentName="dataSource1" Name="Data Source 1">
+      <DataProvider DataConnection="10.1.249.63_DMPConnection" SupportSql="true">
+        <Selection>
+          <Table Name="SysUser">
+            <Columns>
+              <Column Name="SysNo" Alias="SysNo" />
+              <Column Name="UserNo" Alias="UserNo" />
+              <Column Name="UserName" Alias="UserName" />
+              <Column Name="UserPassword" Alias="UserPassword" />
+              <Column Name="UserMail" Alias="UserMail" />
+              <Column Name="Status" Alias="Status" />
+              <Column Name="LastLoginDate" Alias="LastLoginDate" />
+              <Column Name="LastLoginIp" Alias="LastLoginIp" />
+              <Column Name="Skin" Alias="Skin" />
+              <Column Name="CreateUserNo" Alias="CreateUserNo" />
+              <Column Name="CreateDate" Alias="CreateDate" />
+              <Column Name="UpdateUserNo" Alias="UpdateUserNo" />
+              <Column Name="UpdateDate" Alias="UpdateDate" />
+            </Columns>
+          </Table>
+        </Selection>
+      </DataProvider>
+    </DataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="dataSource1">
+      <DataItems>
+        <Dimension DataMember="CreateDate" UniqueName="DataItem0" />
+        <Measure DataMember="SysNo" SummaryType="Count" UniqueName="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="dataSource1">
+      <DataItems>
+        <Dimension DataMember="Skin" UniqueName="DataItem0" />
+        <Measure DataMember="SysNo" UniqueName="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value UniqueName="DataItem1" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem Weight="0.5" DashboardItem="chartDashboardItem1" />
+      <LayoutItem Weight="0.5" DashboardItem="pieDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

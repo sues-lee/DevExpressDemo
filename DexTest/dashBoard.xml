@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="zh-CN">
+  <Title Text="Dashboard" />
+  <DataConnections>
+    <DataConnection Name="10.1.249.63_DMPConnection" ProviderKey="MSSqlServer">
+      <Parameters>
+        <Parameter Name="server" Value="10.1.249.63" />
+        <Parameter Name="database" Value="DMP" />
+        <Parameter Name="useIntegratedSecurity" Value="False" />
+        <Parameter Name="read only" Value="1" />
+        <Parameter Name="generateConnectionHelper" Value="false" />
+      </Parameters>
+    </DataConnection>
+  </DataConnections>
+  <DataSources>
+    <DataSource ComponentName="dataSource1" Name="MemberRegister">
+      <DataProvider DataConnection="10.1.249.63_DMPConnection" SupportSql="true" Sql="select mmr.CreateDate 日期,mmr.[Hour] 小时,SUM(mmr.DataValue) 注册数&#xD;&#xA;	from M_MemberRegister mmr WITH(NOLOCK)&#xD;&#xA;	--where mmr.ModifyTime &gt;DATEADD(hour, -48, GETDATE())&#xD;&#xA;	group by mmr.CreateDate,&#xD;&#xA;			mmr.[Hour]&#xD;&#xA;	order by mmr.CreateDate,&#xD;&#xA;			mmr.[Hour]">
+        <Selection>
+          <Table Name="M_MemberRegister">
+            <Columns>
+              <Column Name="Id" Alias="Id" />
+              <Column Name="MemberLevel" Alias="MemberLevel" />
+              <Column Name="DataValue" Alias="DataValue" />
+              <Column Name="Hour" Alias="Hour" />
+              <Column Name="CreateDate" Alias="CreateDate" />
+              <Column Name="ModifyTime" Alias="ModifyTime" />
+            </Columns>
+          </Table>
+          <Filters>
+            <Filter TableName="M_MemberRegister" FilterString="" />
+          </Filters>
+        </Selection>
+      </DataProvider>
+    </DataSource>
+    <DataSource ComponentName="dataSource2" Name="VNoHead">
+      <DataProvider DataConnection="10.1.249.63_DMPConnection" SupportSql="true" Sql="select  TOP 10 &quot;M_VNoHead&quot;.&quot;VNoHead&quot; as &quot;VNoHead&quot;,&#xD;&#xA;       SUM(&quot;M_VNoHead&quot;.&quot;DataValue&quot;) as &quot;DataValue&quot; &#xD;&#xA;  from &quot;dbo&quot;.&quot;M_VNoHead&quot; &quot;M_VNoHead&quot;&#xD;&#xA;  --where &quot;M_VNoHead&quot;.ModifyTime &gt;DATEADD(hour, -48, GETDATE())&#xD;&#xA;  group by &quot;M_VNoHead&quot;.VNoHead,&quot;M_VNoHead&quot;.DataValue&#xD;&#xA;  order by SUM(&quot;M_VNoHead&quot;.DataValue)">
+        <Selection>
+          <Table Name="M_VNoHead">
+            <Columns>
+              <Column Name="Id" Alias="Id" />
+              <Column Name="VNoHead" Alias="VNoHead" />
+              <Column Name="Hour" Alias="Hour" />
+              <Column Name="DataValue" Alias="DataValue" />
+              <Column Name="CreateDate" Alias="CreateDate" />
+              <Column Name="ModifyTime" Alias="ModifyTime" />
+            </Columns>
+          </Table>
+          <Filters>
+            <Filter TableName="M_VNoHead" FilterString="" />
+          </Filters>
+        </Selection>
+      </DataProvider>
+    </DataSource>
+    <DataSource ComponentName="dataSource4" Name="RegisterIncrease">
+      <DataProvider DataConnection="10.1.249.63_DMPConnection" SupportSql="true" Sql="select mmr.CreateDate 日期,mmr.[Hour] 小时,mmr.MemberLevel 会员等级, mmr.DataValue 注册数&#xD;&#xA;	from M_MemberRegister mmr WITH(NOLOCK)&#xD;&#xA;	--where mmr.ModifyTime &gt;DATEADD(hour, -48, GETDATE())&#xD;&#xA;	order by mmr.CreateDate,&#xD;&#xA;			mmr.[Hour]">
+        <Selection>
+          <Table Name="M_MemberRegister">
+            <Columns>
+              <Column Name="Id" Alias="Id" />
+              <Column Name="MemberLevel" Alias="MemberLevel" />
+              <Column Name="DataValue" Alias="DataValue" />
+              <Column Name="Hour" Alias="Hour" />
+              <Column Name="CreateDate" Alias="CreateDate" />
+              <Column Name="ModifyTime" Alias="ModifyTime" />
+            </Columns>
+          </Table>
+          <Filters>
+            <Filter TableName="M_MemberRegister" FilterString="" />
+          </Filters>
+        </Selection>
+      </DataProvider>
+    </DataSource>
+    <DataSource ComponentName="dataSource5" Name="VNoHead2">
+      <DataProvider DataConnection="10.1.249.63_DMPConnection" SupportSql="true" Sql="select TOP 5 mvh.&quot;VNoHead&quot; as 渠道,&#xD;&#xA;       SUM(mvh.&quot;DataValue&quot;) as 总数 ,mvh.[Hour]&#xD;&#xA;  from &quot;dbo&quot;.&quot;M_VNoHead&quot; mvh WITH(NOLOCK)&#xD;&#xA;  --where mvh.ModifyTime &gt;DATEADD(hour, -48, GETDATE())&#xD;&#xA;  group by mvh.VNoHead,mvh.[Hour]&#xD;&#xA;  order by SUM(mvh.DataValue) desc">
+        <Selection>
+          <Table Name="M_VNoHead">
+            <Columns>
+              <Column Name="Id" Alias="Id" />
+              <Column Name="VNoHead" Alias="VNoHead" />
+              <Column Name="Hour" Alias="Hour" />
+              <Column Name="DataValue" Alias="DataValue" />
+              <Column Name="CreateDate" Alias="CreateDate" />
+              <Column Name="ModifyTime" Alias="ModifyTime" />
+            </Columns>
+          </Table>
+          <Filters>
+            <Filter TableName="M_VNoHead" FilterString="" />
+          </Filters>
+        </Selection>
+      </DataProvider>
+    </DataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="dataSource1">
+      <DataItems>
+        <Dimension DataMember="日期" DateTimeGroupInterval="DayMonthYear" UniqueName="DataItem2" />
+        <Measure DataMember="注册数" UniqueName="DataItem1" />
+        <Dimension DataMember="小时" UniqueName="DataItem0">
+          <NumericFormat FormatType="Number" Precision="0" Unit="Ones" />
+        </Dimension>
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+        <Argument UniqueName="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple SeriesType="StackedLine">
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem2" Name="Chart 2" DataSource="dataSource4">
+      <DataItems>
+        <Dimension DataMember="会员等级" UniqueName="DataItem0" />
+        <Measure DataMember="注册数" UniqueName="DataItem1" />
+        <Dimension DataMember="小时" UniqueName="DataItem2" />
+        <Dimension DataMember="日期" DateTimeGroupInterval="DayMonthYear" UniqueName="DataItem3" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem2" />
+        <Argument UniqueName="DataItem3" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="dataSource2">
+      <DataItems>
+        <Measure DataMember="DataValue" UniqueName="DataItem1" />
+        <Dimension DataMember="VNoHead" UniqueName="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value UniqueName="DataItem1" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem3" Name="Chart 3" DataSource="dataSource5">
+      <DataItems>
+        <Dimension DataMember="渠道" UniqueName="DataItem2" />
+        <Dimension DataMember="Hour" UniqueName="DataItem0">
+          <NumericFormat FormatType="Number" Precision="0" Unit="Ones" />
+        </Dimension>
+        <Measure DataMember="总数" UniqueName="DataItem1" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem2" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Weight="0.5" Orientation="Vertical">
+        <LayoutItem Weight="0.5" DashboardItem="chartDashboardItem1" />
+        <LayoutItem Weight="0.5" DashboardItem="pieDashboardItem1" />
+      </LayoutGroup>
+      <LayoutGroup Weight="0.5" Orientation="Vertical">
+        <LayoutItem Weight="0.5" DashboardItem="chartDashboardItem2" />
+        <LayoutItem Weight="0.5" DashboardItem="chartDashboardItem3" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

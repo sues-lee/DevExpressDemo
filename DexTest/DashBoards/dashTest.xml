@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="zh-CN">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <DataSource ComponentName="dataSource1" Name="first" />
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="dataSource1">
+      <DataItems>
+        <Dimension DataMember="Hour" UniqueName="DataItem0" />
+        <Measure DataMember="DataValue" UniqueName="DataItem2" />
+        <Dimension DataMember="CreateDate" DateTimeGroupInterval="DayMonthYear" UniqueName="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+        <Argument UniqueName="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem2" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
