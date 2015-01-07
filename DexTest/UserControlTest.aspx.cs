@@ -47,7 +47,7 @@ namespace DexTest
                     registersTendency.AddRegistersTendencyRow(item.CreateDate, item.Hour, item.DataValue);
                 }
 
-                dataSourse = registersTendency;
+                dataSourse = result;
             }
 
             CallBackDashBoard1.DataSourse = dataSourse;
