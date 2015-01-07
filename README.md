@@ -11,4 +11,4 @@ UserControlTest.aspx
 应用CallBackDashBoard的示例页面
 
 ##实际结果应用截图
-![](https://github.com/sues-lee/DevExpressDemo/ScreenShots/Demo.png)
+![](https://github.com/sues-lee/DevExpressDemo/blob/master/ScreenShots/Demo.PNG)
