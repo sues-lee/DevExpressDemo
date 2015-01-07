@@ -1,6 +1,6 @@
-DevExpressDemo
+DevExpress_CallBackDashBoard
 ==============
-一个DevExpress的示例程序
+一个基于DevExpress的自刷新DashBoard示例程序
 
 CallBackDashBoard.ascx
 ------------------------
